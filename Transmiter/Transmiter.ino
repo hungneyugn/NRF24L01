@@ -32,24 +32,15 @@ void setup()
   //mở 1 kênh có địa chỉ 12345 trên đường truyền 0
   // kênh này ghi data lên địa chỉ 12345  
   radio.setPALevel(RF24_PA_MIN); 
-  //Cài bộ khuyết địa công suất ở mức MIN, MAX, HIGH, LOW
+  //Cài bộ khuyếch đại công suất ở mức MIN, MAX, HIGH, LOW
   radio.setChannel(80); // 125 kênh từ 0-124; TX và RX phải cùng kênh
                         // 2.4GHz ~ 2400Mhz, bước kênh là 1MHz
                         // setchannel(1) => 2401Mhz
                         // Cao nhất là 2525MHz, Tức là 2.525GHz
                         
   radio.setDataRate(RF24_250KBPS); //Tốc độ truyền dữ liệu trong không khí
-                                   //250kbps, 1Mbps hoặc 2Mbps
-                                   //250 thấp nhất nhưng truyền xa, 1Mb và 2Mb mạnh nhưng truyền không xa                                   
-  /*                                   
-   * Tốc độ truyền dữ liệu không khí 2Mbps, băng thông 2MHz bị chiếm dụng nhiều tần số kênh 
-   * rộng hơn độ phân giải của cài đặt tần số kênh RF
-   * Vì vậy, để đảm bảo các kênh không chồng chéo và giảm kết nối chéo ở chế độ 2Mbps
-   * bạn cần giữ khoảng cách 2MHz giữa hai kênh.                                    
-   * 
-   * A: Xe TX-RX kênh 80, tốc độ truyền là 2Mb 80, 81, 82
-   * B: Máy bay TX-RX kênh 83, tốc độ truyền là 250Kb                                    
-   */
+                                   //250kbps, 1Mbps hoặc 2Mbps                                 
+
   radio.stopListening(); //Cài đặt module là TX
   
   if (!radio.available())
